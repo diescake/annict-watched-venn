@@ -2,6 +2,8 @@
 
 annict-watched-venn is a tool to represent watched animation history with Venn diagram from referring Annict's user information.
 
+![sample](./dist/sample.png "sample")
+
 ## Installation
 
 Recommend nodejs over `6.9.4`.
@@ -37,7 +39,6 @@ $ python -m SimpleHTTPServer
 ```
 
 4. Open your browser and access there.
-
 
 ## Note
 
