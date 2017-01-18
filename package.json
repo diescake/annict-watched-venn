@@ -1,0 +1,34 @@
+{
+  "name": "annict-watched-venn",
+  "version": "1.0.0",
+  "description": "represent the venn diagram of comparing watched animes.",
+  "main": "bin/annict-watched-venn",
+  "scripts": {
+    "start": "node bin/annict-watched-venn",
+    "dev": "DEBUG=nightmare:actions* node-dev --debug ./bin/annict-watched-venn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aDaisukeKondo/annict-watched-venn.git"
+  },
+  "keywords": [
+    "Annict",
+    "anime"
+  ],
+  "author": "Daisuke Kondo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aDaisukeKondo/annict-watched-venn/issues"
+  },
+  "homepage": "https://github.com/aDaisukeKondo/annict-watched-venn#readme",
+  "dependencies": {
+    "co": "^4.6.0",
+    "fs": "0.0.1-security",
+    "nightmare": "^2.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "node-dev": "^3.1.3",
+    "node-inspector": "^0.12.8"
+  }
+}

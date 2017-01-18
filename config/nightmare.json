@@ -1,0 +1,15 @@
+{
+  "show": false,
+  "x": 100,
+  "y": 100,
+  "width": 1200,
+  "height": 600,
+  "frame": true,
+  "skipTaskbar": false,
+  "autoHideMenuBar": false,
+  "resizable": true,
+  "openDevTools": true,
+  "waitTimeout": 360000000,
+  "pollInterval": 30
+}
+

@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const co = require('co');
+const fs = require('fs');
+
+const AnnictClient = require('../lib/annict-client.js');
+const users = require('../config/users.json');
+
+const FILENAME = 'venns.json';
+
+co(function *() {
+  let watchedLists = {};
+
+  // get watchedList
+  for (let i = 0; i < users.length; i++) {
+    const id = users[i];
+    const client = new AnnictClient(id);
+
+    const maxPageIndex = yield client.fetchMaxPageIndex();
+    watchedLists[id] = yield client.fetchAnimes(maxPageIndex);
+
+    client.dispose();
+  }
+
+  // watched
+  let venns = [];
+
+  for (let i = 0; i < users.length; i++) {
+    const id = users[i];
+
+    venns.push({
+      area: [id],
+      animes: watchedLists[id]
+    });
+  }
+
+  // both user watched
+  for (let i = 0; i < users.length - 1; i++) {
+    for (let j = i + 1; j < users.length; j++) {
+      const idA = users[i];
+      const idB = users[j];
+
+      venns.push({
+        area: [idA, idB],
+        animes: ((aListA, aListB) => {
+          let animes = [];
+          for (let i = 0; i < aListA.length; i++) {
+            for (let j = 0; j < aListB.length; j++) {
+              if (aListA[i].id === aListB[j].id) {
+                animes.push(aListA[i]); // push anime if both user watched it
+                break;
+              }
+            }
+          }
+          return animes;
+        })(watchedLists[idA], watchedLists[idB])
+      });
+    }
+  }
+
+  fs.writeFile(`dist/${FILENAME}`, JSON.stringify(venns, null, '  '));
+});
+
