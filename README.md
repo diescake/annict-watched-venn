@@ -1,6 +1,6 @@
 # annict-watched-venn
 
-__!!!Notice!!! This tool may be NOT work because the layout of annict website is greatly changed.__  
+__!!!Notice!!! This tool will NOT work because the layout of annict website is greatly changed.__  
   
 annict-watched-venn is a tool to represent watched animation history with Venn diagram from referring Annict's user information.
 
